@@ -16,6 +16,7 @@ end
 
 action :create do
   _lxc = @lxc
+
   execute "LXC Create: #{new_resource.name}" do
     command "lxc-create -n #{new_resource.name} -t #{new_resource.template} -- #{new_resource.template_opts.to_a.flatten.join(' ')}"
     environment new_resource.environment

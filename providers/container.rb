@@ -291,7 +291,8 @@ action :create do
 
   file "lxc chef-runlist[#{new_resource.name}]" do
     path _lxc.rootfs.join('etc/chef/first_run.json').to_path
-    content({:run_list => new_resource.run_list}.to_json)
+    content(new_resource.attributes.merge({
+        :run_list => new_resource.run_list}).to_json)
     only_if do
       new_resource.chef_enabled && !_lxc.rootfs.join('etc/chef/client.pem').exist?
     end
