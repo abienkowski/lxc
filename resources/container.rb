@@ -9,6 +9,7 @@ default_action :create
 attribute :validation_client, :kind_of => String
 attribute :validator_pem, :kind_of => String, :default => nil
 attribute :server_uri, :kind_of => String
+attribute :ssl_verify_mode, :kind_of => String
 attribute :chef_environment, :kind_of => String, :default => '_default'
 attribute :node_name, :kind_of => String
 attribute :run_list, :kind_of => Array

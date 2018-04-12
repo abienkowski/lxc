@@ -275,7 +275,8 @@ action :create do
       :validation_client => new_resource.validation_client || Chef::Config[:validation_client_name],
       :node_name => new_resource.node_name || "#{node.name}-#{new_resource.name}",
       :server_uri => new_resource.server_uri || Chef::Config[:chef_server_url],
-      :chef_environment => new_resource.chef_environment || '_default'
+      :chef_environment => new_resource.chef_environment || '_default',
+      :ssl_verify_mode => new_resource.ssl_verify_mode || 'verify_peer'
     )
     mode 0644
     only_if{ new_resource.chef_enabled }
