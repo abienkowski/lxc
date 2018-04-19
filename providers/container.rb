@@ -49,6 +49,12 @@ action :create do
     end
   end
 
+
+  # -- NOTE: hack to fix elecksee config parsing
+  execute 'remove backend' do
+    command "sed -i -e '/lxc.rootfs.backend/d' #{node[:lxc][:container_directory]}/#{new_resource.name}/config"
+  end
+
   #### Create container configuration bits
   if(new_resource.default_config)
     lxc_config new_resource.name do
